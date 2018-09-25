@@ -21,11 +21,12 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+    @import '~styles/varibles.styl'
     .homeheader-wrap
         display flex
         width 100%
         line-height .86rem
-        background #00bcd4
+        background $bgColor
         color #fff
         text-align center
         .homeheader-left
