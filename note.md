@@ -11,3 +11,10 @@
    fastclick第三方库
 
 4. padding margin 图片的宽高 为百分比时 是相对于谁
+   (padding-bottom: 50%)
+
+5. stylus: 变量 方法
+
+6. 修改插件样式 >>>
+
+7. 
