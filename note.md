@@ -10,4 +10,4 @@
 3. 移动端click300ms延迟
    fastclick第三方库
 
-4. 
+4. padding margin 图片的宽高 为百分比时 是相对于谁
