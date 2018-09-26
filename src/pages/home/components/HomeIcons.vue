@@ -9,6 +9,7 @@
           <p class="icon-desc">{{icon.desc}}</p>
         </div>
       </swiper-slide>
+      <div class="swiper-pagination"  slot="pagination" v-if="iconList.length > 8"></div>
     </swiper>
   </div>
 </template>
@@ -18,7 +19,9 @@ export default {
   name: 'HomeIcons',
   data() {
     return {
-      swiperOption: {},
+      swiperOption: {
+        pagination: '.swiper-pagination',
+      },
       iconList: [
         {
           src: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
@@ -91,6 +94,13 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
   @import '~styles/mixins.styl'
+  .homeicons-wrap >>> .swiper-pagination-bullet
+    width .08rem
+    height .08rem
+  .homeicons-wrap >>> .swiper-pagination-bullet-active
+    background $bgColor
+  .homeicons-wrap >>> .swiper-container-horizontal > .swiper-pagination-bullets
+    bottom 0
   .homeicons-wrap >>> .swiper-slide
     overflow hidden
     display flex
