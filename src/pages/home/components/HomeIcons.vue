@@ -105,6 +105,8 @@ export default {
     overflow hidden
     display flex
     flex-wrap wrap
+  .homeicons-wrap
+    padding .1rem 0 .2rem
     .icon-item
       width 25%
       text-align center

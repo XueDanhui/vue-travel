@@ -1,8 +1,10 @@
 <template>
-    <div>
+    <div class="home">
         <home-header></home-header>
         <index-swiper></index-swiper>
         <home-icons></home-icons>
+        <recommend></recommend>
+        <weekend></weekend>
     </div> 
 </template>
 
@@ -10,6 +12,8 @@
 import HomeHeader from './components/HomeHeader';
 import IndexSwiper from './components/Swiper';
 import HomeIcons from './components/HomeIcons';
+import Recommend from './components/Recommend';
+import Weekend from './components/Weekend';
 
 export default {
   name: 'Home',
@@ -17,9 +21,11 @@ export default {
     HomeHeader,
     IndexSwiper,
     HomeIcons,
+    Recommend,
+    Weekend,
   },
 };
 </script>
 
-<style>
+<style lang="stylus" scoped>
 </style>
