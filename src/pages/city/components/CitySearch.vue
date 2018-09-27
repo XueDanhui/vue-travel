@@ -15,13 +15,13 @@ export default {
   
   .citysearch-wrap
     width 100%
-    height .86rem
+    height .7rem
     background $bgColor
-    padding .15rem .2rem
+    padding .1rem .2rem
     box-sizing border-box
     .search-input
       width 100%
-      height .56rem
+      height .5rem
       border-radius .05rem
       text-align center
       font-size .28rem
