@@ -1,7 +1,9 @@
 <template>
   <div class="cityheader-wrap">
     选择城市
-    <span class="iconfont city-back">&#xe624;</span>
+    <router-link to="/" class="city-back">
+      <span class="iconfont">&#xe624;</span>
+    </router-link>
   </div>
 </template>
 
@@ -27,5 +29,6 @@ export default {
       position absolute
       left 0
       top 0
+      color #fff
 </style>
 
