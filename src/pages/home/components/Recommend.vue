@@ -32,8 +32,10 @@ export default {
     color $mainFontColor
     text-indent .1rem
     font-size .28rem
-  .recommend-li:last-child:before
-    display none
+  .recommend-li
+    &:last-child
+      &:before
+        display none
   .recommend-li
     display flex
     position relative
