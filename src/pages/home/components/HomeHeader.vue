@@ -7,10 +7,12 @@
             <span class="iconfont">&#xe632;</span>
             输入城市/景点/游玩主题
         </div>
-        <div class="homeheader-right">
-            {{city}}
-            <span class="iconfont">&#xe61b;</span>
-        </div>
+        <router-link to="/city">
+          <div class="homeheader-right">
+              {{city}}
+              <span class="iconfont">&#xe61b;</span>
+          </div>
+        </router-link>
     </div> 
 </template>
 
@@ -28,7 +30,7 @@ export default {
     .homeheader-wrap
         display flex
         width 100%
-        line-height .86rem
+        line-height $headerHeight
         background $bgColor
         color #fff
         text-align center
@@ -49,4 +51,5 @@ export default {
         .homeheader-right
             float right
             width 1.24rem
+            color #fff
 </style>
