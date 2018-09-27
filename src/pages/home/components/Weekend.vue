@@ -3,10 +3,10 @@
     <div class="title">周末去哪儿</div>
     <ul class="weekend-ul">
       <li class="weekend-li" v-for="item in weekendList" :key="item.id">
-        <img :src="item.src" alt="" class="weekend-img">
+        <img :src="item.imgUrl" alt="" class="weekend-img">
         <div class="weekend-desc">
           <p class="weekend-title">{{item.title}}</p>
-          <p class="weekend-text">{{item.text}}</p>
+          <p class="weekend-text">{{item.desc}}</p>
         </div>
       </li>
     </ul>
@@ -16,29 +16,8 @@
 <script>
 export default {
   name: 'weekend',
-  data() {
-    return {
-      weekendList: [
-        {
-          id: '1',
-          src: 'http://img1.qunarzz.com/sight/source/1505/ce/bc89bc2f0e33ea.jpg_r_640x214_3e408453.jpg',
-          title: '北京野生动物园',
-          text: '北京郊区的一座大型自然生态动物园',
-        },
-        {
-          id: '2',
-          src: 'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
-          title: '北京野生动物园',
-          text: '北京郊区的一座大型自然生态动物园',
-        },
-        {
-          id: '3',
-          src: 'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
-          title: '北京野生动物园',
-          text: '北京郊区的一座大型自然生态动物园',
-        },
-      ],
-    };
+  props: {
+    weekendList: Array,
   },
 };
 </script>

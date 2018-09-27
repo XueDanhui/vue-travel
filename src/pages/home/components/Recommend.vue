@@ -3,10 +3,10 @@
     <div class="title">热门推荐</div>
     <ul class="recommend-ul">
       <li class="recommend-li border-bottom" v-for="item in recommendList" :key="item.id">
-        <img :src="item.src" alt="" class="recommend-img">
+        <img :src="item.imgUrl" alt="" class="recommend-img">
         <div class="recommend-desc">
           <p class="recommend-title">{{item.title}}</p>
-          <p class="recommend-text">{{item.text}}</p>
+          <p class="recommend-text">{{item.desc}}</p>
           <button class="recommend-btn">查看详情</button>
         </div>
       </li>
@@ -17,29 +17,8 @@
 <script>
 export default {
   name: 'Recommend',
-  data() {
-    return {
-      recommendList: [
-        {
-          id: '1',
-          src: 'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
-          title: '北京野生动物园',
-          text: '北京郊区的一座大型自然生态动物园',
-        },
-        {
-          id: '2',
-          src: 'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
-          title: '北京野生动物园',
-          text: '北京郊区的一座大型自然生态动物园',
-        },
-        {
-          id: '3',
-          src: 'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
-          title: '北京野生动物园',
-          text: '北京郊区的一座大型自然生态动物园',
-        },
-      ],
-    };
+  props: {
+    recommendList: Array,
   },
 };
 </script>

@@ -1,9 +1,9 @@
 <template>
     <div class="swiper-wrap">
-        <swiper :options="swiperOption">
+        <swiper :options="swiperOption" v-if="showSwiper">
             <!-- slides -->
             <swiper-slide v-for="item in swiperList" :key="item.id">
-                <img class="index-swiper-img" :src="item.src" alt="">
+                <img class="index-swiper-img" :src="item.imgUrl" alt="">
             </swiper-slide>
             <!-- Optional controls -->
             <div class="swiper-pagination"  slot="pagination"></div>
@@ -14,6 +14,9 @@
 <script>
 export default {
   name: 'index-swiper',
+  props: {
+    swiperList: Array,
+  },
   data() {
     return {
       swiperOption: {
@@ -21,17 +24,12 @@ export default {
         pagination: '.swiper-pagination',
         loop: true,
       },
-      swiperList: [
-        {
-          id: '0001',
-          src: 'http://img1.qunarzz.com/piao/fusion/1807/66/e5a5cec881702f02.jpg_750x200_67bb5691.jpg',
-        },
-        {
-          id: '0002',
-          src: 'http://img1.qunarzz.com/piao/fusion/1809/ad/50e124f6caef1e02.jpg_750x200_2bec926d.jpg',
-        },
-      ],
     };
+  },
+  computed: {
+    showSwiper() {
+      return this.swiperList.length;
+    },
   },
 };
 </script>
@@ -45,8 +43,9 @@ export default {
       background rgba(255,255,255,1)
     .swiper-wrap
       width 100%
-      height 26.67vw
+      height 2.2rem
       .index-swiper-img
         width 100%
+        height 2.2rem
 </style>
 

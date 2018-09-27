@@ -22,3 +22,9 @@
 8. flex布局 flex: 1
 
 9. 超出省略号 min-width
+
+10. axios 
+
+11. 只有static目录下的文件可以被外部访问到，即在浏览器地址栏直接通过url访问
+
+12. proxy
