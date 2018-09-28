@@ -31,4 +31,4 @@
 
 13. vue -- ref
 
-14. 元素的位置坐标 offset clientX
+14. 元素的位置坐标 offsetTop clientY

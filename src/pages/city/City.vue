@@ -2,8 +2,8 @@
   <div class="city-wrap">
     <city-header></city-header>
     <city-search></city-search>
-    <city-list :hotCities="hotCities" :cities="cities"></city-list>
-    <letter :letter="letter"></letter>
+    <city-list :hotCities="hotCities" :cities="cities" :targetLetter="targetLetter"></city-list>
+    <letter :letter="letter" @change="handleChange"></letter>
   </div>
 </template>
 
@@ -27,6 +27,7 @@ export default {
       hotCities: [],
       letter: [],
       cities: {},
+      targetLetter: '',
     };
   },
   mounted() {
@@ -45,6 +46,9 @@ export default {
         this.cities = data.cities;
         this.letter = Object.keys(data.cities);
       }
+    },
+    handleChange(letter) {
+      this.targetLetter = letter;
     },
   },
 };

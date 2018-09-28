@@ -1,6 +1,16 @@
 <template>
   <ul class="letter-wrap">
-    <li class="letter-item" v-for="item in letter" :key="item">{{item}}</li>
+    <li class="letter-item" 
+        v-for="(item, index) of letter" 
+        :key="item"
+        :ref="item"
+        :class="{active: index === activeIndex}"
+        @click="clickLetter"
+        @touchstart="handleTouchstart"
+        @touchmove="handleTouchmove"
+        @touchend="handleTouchend">
+      {{item}}
+    </li>
   </ul>
 </template>
 
@@ -9,6 +19,35 @@ export default {
   name: 'Letter',
   props: {
     letter: Array,
+  },
+  data() {
+    return {
+      touchStatus: false,
+      activeIndex: 0,
+    };
+  },
+  methods: {
+    clickLetter(e) { 
+      this.activeIndex = this.letter.indexOf(e.target.innerText);
+      this.$emit('change', e.target.innerText);
+    },
+    handleTouchstart() {
+      this.touchStatus = true;
+    },
+    handleTouchmove(e) {
+      if (this.touchStatus) {
+        const startY = this.$refs[this.letter[0]][0].offsetTop;
+        const touchY = e.touches[0].clientY - 78;
+        const letterIndex = Math.floor((touchY - startY) / 20);
+        if (letterIndex >= 0 && letterIndex < this.letter.length) {
+          this.activeIndex = letterIndex;
+          this.$emit('change', this.letter[letterIndex]);
+        }
+      }
+    },
+    handleTouchend() {
+      this.touchStatus = false;
+    },
   },
 };
 </script>
@@ -28,4 +67,6 @@ export default {
       line-height .4rem
       width .5rem
       text-align center
+      &.active
+        background rgba(133,233,246,0.3);
 </style>
