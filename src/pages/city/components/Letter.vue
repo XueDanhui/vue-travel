@@ -24,7 +24,12 @@ export default {
     return {
       touchStatus: false,
       activeIndex: 0,
+      startY: 0,
+      timer: null,
     };
+  },
+  updated() {
+    this.startY = this.$refs[this.letter[0]][0].offsetTop;
   },
   methods: {
     clickLetter(e) { 
@@ -36,13 +41,17 @@ export default {
     },
     handleTouchmove(e) {
       if (this.touchStatus) {
-        const startY = this.$refs[this.letter[0]][0].offsetTop;
-        const touchY = e.touches[0].clientY - 78;
-        const letterIndex = Math.floor((touchY - startY) / 20);
-        if (letterIndex >= 0 && letterIndex < this.letter.length) {
-          this.activeIndex = letterIndex;
-          this.$emit('change', this.letter[letterIndex]);
+        if (this.timer) {
+          clearTimeout(this.timer);
         }
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY - 78;
+          const letterIndex = Math.floor((touchY - this.startY) / 20);
+          if (letterIndex >= 0 && letterIndex < this.letter.length) {
+            this.activeIndex = letterIndex;
+            this.$emit('change', this.letter[letterIndex]);
+          }     
+        }, 16);
       }
     },
     handleTouchend() {

@@ -32,3 +32,5 @@
 13. vue -- ref
 
 14. 元素的位置坐标 offsetTop clientY
+
+15. 函数节流: 比如在touchmove中 写timeout, 当存在该timeout时清除timeout, 重新执行，减少touchmove执行次数
