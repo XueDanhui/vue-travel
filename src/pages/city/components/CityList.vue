@@ -39,8 +39,38 @@ export default {
     cities: Object,
     targetLetter: String,
   },
+  data() {
+    return {
+      areaOffset: {},
+    };
+  },
+  methods: {
+    getCurrentArea(scrollY) {
+      let obj = '';
+      Object.keys(this.areaOffset).forEach((item) => {
+        if (Math.abs(scrollY) <= this.areaOffset[item]) {
+          return;
+        }
+        obj = item;
+      });
+      this.$emit('changeLetter', obj);
+    },
+  },
   mounted() {
-    this.scroll = new BScroll(this.$refs.wrapper);
+    this.scroll = new BScroll(this.$refs.wrapper, {
+      probeType: 2,
+    });
+    this.scroll.on('scroll', (pos) => {
+      this.getCurrentArea(pos.y);
+    });
+    this.scroll.on('scrollEnd', (pos) => {
+      this.getCurrentArea(pos.y);
+    });
+  },
+  updated() {
+    Object.keys(this.cities).forEach((item) => {
+      this.areaOffset[item] = this.$refs[item][0].offsetTop;
+    });
   },
   watch: {
     targetLetter() {

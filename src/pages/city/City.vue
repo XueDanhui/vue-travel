@@ -2,8 +2,8 @@
   <div class="city-wrap">
     <city-header></city-header>
     <city-search></city-search>
-    <city-list :hotCities="hotCities" :cities="cities" :targetLetter="targetLetter"></city-list>
-    <letter :letter="letter" @change="handleChange"></letter>
+    <city-list :hotCities="hotCities" :cities="cities" :targetLetter="targetLetter" @changeLetter="changeLetter"></city-list>
+    <letter :letter="letter" :toLetter="toLetter" @change="handleChange"></letter>
   </div>
 </template>
 
@@ -28,6 +28,7 @@ export default {
       letter: [],
       cities: {},
       targetLetter: '',
+      toLetter: '',
     };
   },
   mounted() {
@@ -49,6 +50,9 @@ export default {
     },
     handleChange(letter) {
       this.targetLetter = letter;
+    },
+    changeLetter(letter) {
+      this.toLetter = letter;
     },
   },
 };

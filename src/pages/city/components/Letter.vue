@@ -19,6 +19,7 @@ export default {
   name: 'Letter',
   props: {
     letter: Array,
+    toLetter: String,
   },
   data() {
     return {
@@ -30,6 +31,11 @@ export default {
   },
   updated() {
     this.startY = this.$refs[this.letter[0]][0].offsetTop;
+  },
+  watch: {
+    toLetter() {
+      this.activeIndex = this.letter.indexOf(this.toLetter);
+    },
   },
   methods: {
     clickLetter(e) { 
