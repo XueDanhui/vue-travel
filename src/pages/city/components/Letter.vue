@@ -1,22 +1,15 @@
 <template>
   <ul class="letter-wrap">
-    <li class="letter-item">A</li>
-    <li class="letter-item">B</li>
-    <li class="letter-item">C</li>
-    <li class="letter-item">D</li>
-    <li class="letter-item">E</li>
-    <li class="letter-item">F</li>
-    <li class="letter-item">G</li>
-    <li class="letter-item">H</li>
-    <li class="letter-item">I</li>
-    <li class="letter-item">J</li>
-    <li class="letter-item">K</li>
+    <li class="letter-item" v-for="item in letter" :key="item">{{item}}</li>
   </ul>
 </template>
 
 <script>
 export default {
   name: 'Letter',
+  props: {
+    letter: Array,
+  },
 };
 </script>
 
