@@ -5,7 +5,7 @@
         <div class="title">当前城市</div>
         <div class="button-content">
           <div class="button-wrap">
-            <button class="button">北京</button>
+            <button class="button">{{this.$store.state.city}}</button>
           </div>
         </div>
       </div>
@@ -13,14 +13,14 @@
         <div class="title">热门城市</div>
         <div class="button-content">
           <div class="button-wrap" v-for="item in hotCities" :key="item.id">
-            <button class="button">{{item.name}}</button>
+            <button class="button" @click="handleSelectCity(item.name)">{{item.name}}</button>
           </div>
         </div>
       </div>
       <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
         <div class="title">{{key}}</div>
         <ul class="city-ul">
-          <li class="city-li border-bottom" v-for="itemInner in item" :key="itemInner.id">
+          <li class="city-li border-bottom" v-for="itemInner in item" :key="itemInner.id" @click="handleSelectCity(itemInner.name)">
             {{itemInner.name}}
           </li>
         </ul>
@@ -59,10 +59,22 @@ export default {
         this.$emit('changeLetter', obj);
       }
     },
+    handleSelectCity(city) {
+      this.$store.commit('changeCity', city);
+      this.$router.push('/');
+    },
   },
   mounted() {
     this.scroll = new BScroll(this.$refs.wrapper, {
       probeType: 2,
+    });
+
+    const init = false;
+    this.scroll.on('scrollStart', () => {
+      if (init) return;
+      Object.keys(this.cities).forEach((item) => {
+        this.areaOffset[item] = this.$refs[item][0].offsetTop;
+      });
     });
     this.scroll.on('scroll', (pos) => {
       this.getCurrentArea(pos.y);
@@ -71,17 +83,15 @@ export default {
       this.getCurrentArea(pos.y);
     });
   },
-  updated() {
-    Object.keys(this.cities).forEach((item) => {
-      this.areaOffset[item] = this.$refs[item][0].offsetTop;
-    });
-  },
   watch: {
     targetLetter() {
       if (this.targetLetter) {
         const element = this.$refs[this.targetLetter][0];
         this.scroll.scrollToElement(element);
       }
+    },
+    cities() {
+      
     },
   },
 };
