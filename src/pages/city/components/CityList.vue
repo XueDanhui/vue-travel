@@ -90,9 +90,6 @@ export default {
         this.scroll.scrollToElement(element);
       }
     },
-    cities() {
-      
-    },
   },
 };
 </script>

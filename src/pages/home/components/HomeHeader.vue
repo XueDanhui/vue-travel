@@ -24,6 +24,7 @@ export default {
 
 <style lang="stylus" scoped>
     @import '~styles/varibles.styl'
+    @import '~styles/mixins.styl'
     .homeheader-wrap
         display flex
         width 100%
@@ -47,6 +48,16 @@ export default {
             padding-left .2rem
         .homeheader-right
             float right
-            width 1.24rem
+            width 1.3rem
             color #fff
+            padding-right 0.3rem
+            padding-left .05rem
+            box-sizing border-box
+            position relative
+            ellipsis()
+            .iconfont
+              position absolute
+              right 0.06rem
+              display inline-block
+              width .3rem
 </style>

@@ -5,7 +5,7 @@
     </div>
     <div class="search-content" v-show="showContent" ref="search">
       <ul class="search-ul">
-        <li class="search-li border-bottom" v-for="(item, index) in result" :key="index">{{item}}</li>
+        <li class="search-li border-bottom" v-for="(item, index) in result" :key="index" @click="handleSelectCity(item)">{{item}}</li>
         <li class="search-li" v-show="noData">没有找的匹配的数据</li>
       </ul>
     </div>
@@ -57,6 +57,12 @@ export default {
           });
         });
       }, 16);      
+    },
+  },
+  methods: {
+    handleSelectCity(city) {
+      this.$store.commit('changeCity', city);
+      this.$router.push('/');
     },
   },
 };
