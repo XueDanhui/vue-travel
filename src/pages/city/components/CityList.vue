@@ -47,13 +47,17 @@ export default {
   methods: {
     getCurrentArea(scrollY) {
       let obj = '';
+      let beforeObj = '';
       Object.keys(this.areaOffset).forEach((item) => {
         if (Math.abs(scrollY) <= this.areaOffset[item]) {
           return;
         }
+        beforeObj = obj;
         obj = item;
       });
-      this.$emit('changeLetter', obj);
+      if (obj !== beforeObj) {
+        this.$emit('changeLetter', obj);
+      }
     },
   },
   mounted() {
