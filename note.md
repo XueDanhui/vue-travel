@@ -38,3 +38,7 @@
 16. vuex 总线
 
 17. vue-router
+
+18. vuex的高级用法
+
+19. keep-alive

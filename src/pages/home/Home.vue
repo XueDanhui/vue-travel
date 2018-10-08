@@ -36,6 +36,7 @@ export default {
       recommendList: [],
       swiperList: [],
       weekendList: [],
+      lastCity: '',
     };
   },
   methods: {
@@ -55,8 +56,15 @@ export default {
     },
   },
   mounted() {
+    this.lastCity = this.$store.state.city;
     this.getIndexInfoFn();
     this.scroll = new BSsroll(this.$refs.wrapper);
+  },
+  activated() {
+    if (this.lastCity !== this.$store.state.city) {
+      this.getIndexInfoFn();
+      this.lastCity = this.$store.state.city;
+    }
   },
 };
 </script>
